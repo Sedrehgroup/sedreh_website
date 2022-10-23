@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Vazirmatn", sans-serif;
+  overflow: auto;
+}
+
+.custom-img {
+  background-image: url("../img/footer.png");
+}
+
+body {
+  overflow: auto;
+}
+
+.wspacing {
+  word-spacing: 0.2rem;
+}
