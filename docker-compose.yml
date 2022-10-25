@@ -72,6 +72,7 @@ services:
       - ALLOW_ORIGIN=http://localhost:3000
 #    volumes:
 #      - /home/sedreh-dinvarzade/Desktop/sedreh_web_application/api_django:/api_django
+    restart: always
 
   celery_worker:
     build:
@@ -124,6 +125,7 @@ services:
       - 3000
     networks:
       - main
+    restart: always
 
   nginx:
     container_name: nginx
