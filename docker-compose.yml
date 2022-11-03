@@ -46,7 +46,7 @@ services:
   api_django:
     build:
       context: ./api_django
-    command: sh -c "python manage.py migrate && gunicorn --reload config.wsgi --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate && celery -A config worker -l INFO --detach && celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler --detach && gunicorn --reload config.wsgi --bind 0.0.0.0:8000"
     container_name: api_django
     depends_on:
       - geoserver
@@ -70,50 +70,12 @@ services:
       - DB_PORT=5432
       - DB_SCHEMA=public
       - ALLOW_ORIGIN=http://localhost:3000
-#    volumes:
+    volumes:
+      - /home/ubuntu/sedreh_web_appilcation/api_django/images:/api_django/images
 #      - /home/sedreh-dinvarzade/Desktop/sedreh_web_application/api_django:/api_django
+
     restart: always
 
-  celery_worker:
-    build:
-      context: ./api_django
-    container_name: celery_worker
-    command: celery -A config worker -l INFO
-    depends_on:
-      - rabbitmq
-      - geoserver
-    environment:
-      - DB_HOST=postgis
-      - DB_NAME=sedreh
-      - DB_USER=postgres
-      - DB_PASS=Alireza12851376
-      - DB_PORT=5432
-      - DB_SCHEMA=public
-      - C_FORCE_ROOT=true
-    networks:
-      - main
-    restart: on-failure
-
-  celery_beat:
-    build:
-      context: ./api_django
-    container_name: celery_beat
-    command: celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
-    depends_on:
-      - api_django
-      - geoserver
-      - rabbitmq
-    environment:
-      - DB_HOST=postgis
-      - DB_NAME=sedreh
-      - DB_USER=postgres
-      - DB_PASS=Alireza12851376
-      - DB_PORT=5432
-      - DB_SCHEMA=public
-      - C_FORCE_ROOT="true"
-    networks:
-      - main
-    restart: always
 
   frontend:
     stdin_open: true
