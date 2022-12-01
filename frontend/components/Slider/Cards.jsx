@@ -10,8 +10,8 @@ import arrowSquareLeft from "../../img/icon/arrow-square-left.svg";
 
 const Cards = (props) => {
   return (
-    <div className="flex flex-col gap-y-3 justify-center items-center">
-      <div className=" rounded-t-2xl object-cover sm:w-[450px] w-[350px] sm:h-[250px] h-[180px]">
+    <div className="flex flex-col justify-center items-center">
+      <div className="rounded-t-2xl object-cover sm:w-[350px] w-[350px] sm:h-[200px] h-[150px]">
         <Image
           className="rounded-t-2xl"
           src={props.cardImage}
@@ -20,9 +20,8 @@ const Cards = (props) => {
           alt=""
         />
       </div>
-
-      <div className=" rounded-b-2xl sm:w-[450px] sm:h-[130px] w-[350px] bg-black1/60 flex flex-col gap-y-1 items-center justify-between ">
-        <p className=" font-semibold text-ED text-lg text-center py-2 px-4">
+      <div className=" rounded-b-2xl sm:w-[350px] sm:h-[150px] w-[350px] bg-black1/80 flex flex-col gap-y-1 items-center justify-between ">
+        <p className=" font-semibold text-ED text-base text-center py-2 px-4">
           {props.title}{" "}
         </p>
         <div className="flex justify-between p-4 w-full">

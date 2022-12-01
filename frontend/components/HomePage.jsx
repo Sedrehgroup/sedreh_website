@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -27,13 +28,44 @@ import code from "../img/icon/code.svg";
 
 import natural from "/img/solutionsImage/natural.jpg";
 
-import p1 from "../img/partners/p1.png";
+import p1Bg from "../img/partners/p1-bg.png";
 import p2 from "../img/partners/p2.png";
-import p3 from "../img/partners/p3.png";
+import p3Bg from "../img/partners/p3-bg.png";
+
+import ReactDOM from "react-dom";
 
 const HomePage = () => {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_6tq8dx3",
+        "template_lh079dc",
+        form.current,
+        "qsclqTFM0PTc7W9o0"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("Message sent ...");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
+  const space = () => {
+    return React.createElement("span", null, "&nbsp;&nbsp;");
+  };
+
+  // let space = createElement("span", null, "&nbsp;&nbsp;");
 
   return (
     <div classname="flex items-center justify-center w-full h-screen ">
@@ -46,29 +78,28 @@ const HomePage = () => {
 
       {/* Overlay */}
       <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-black1/70 ">
-        <div className="container flex flex-col justify-center lg:space-y-36 space-y-4 mt-16 lg:mt-32 mx-4 sm:mx-auto">
-          <div className="flex flex-col sm:gap-y-8 gap-y-8 xl:items-start items-center">
-            <h1 className="px-8 lg:text-4xl sm:text-5xl text-3xl font-extrabold leading-tight text-center xl:text-right sm:w-4/5 xl:w-1/3 md:p-0 text-ED">
-              با استفاده از هوش مکانی با چشمانی باز تصمیم بگیرید{" "}
+        <div className="container flex flex-col justify-center xl:mt-40 xl:gap-y-28 w-full h-screen mx-4 sm:mx-auto">
+          <div className="flex flex-col sm:gap-y-6 xl:gap-y-4  gap-y-8 xl:items-start items-center mt-4">
+            <h1 className="px-8 self-center lg:text-4xl sm:text-5xl text-3xl font-extrabold leading-tight text-center xl:text-center md:p-0 text-ED">
+              با استفاده از <span className="text-primary3">هوش مکانی </span>
+              با چشمانی باز تصمیم بگیرید
             </h1>
-            <p className="px-8 text-justify lg:w-full md:p-0 xl:w-2/3 text-ED/90 font-light wspacing">
-              شرکت ویراپردازان سدره با تولید و پردازش اطلاعات کاربردی مکان‌محور
-              با استفاده از تصاویر ماهواره‌ای طیف وسیعی از نیازها و مشکلاتی که
-              کسب‌وکار‌ها، سازمان‌های دولتی ویا سایر افراد با آن مواجه هستند را
-              برطرف می کند. سدره همچنین راه‌حل‌های موثری را در زمینه های پایش
-              تغییرات کاربری اراضی، هواشناسی، آلودگی هوا، کشاورزی و باغداری،
-              املاک و مستغلات و دیگر زمینه‌های کاربردی بنا بر درخواست سفارشی شما
-              توسعه می‌دهد.
+            {/* <span className="text-primary3">هوش مکانی</span> */}
+            <p className="xl:hidden px-8 text-justify md:p-0 lg:w-2/3 text-ED/90 font-light wspacing">
+              با توجه به نقش کلیدی که تصاویر ماهواره‌ای در اطلاعات مکان‌محور
+              ایفا می‌کند شرکت ویراپردازان سدره با تولید و پردازش داده‌های
+              هوشمند مکانی سعی در برطرف کردن مسائل و نیازهای روز کسب‌وکارها،
+              سازمان‌ها و دیگر افراد دارد.
             </p>
           </div>
-          <div className="">
+          <div className="hidden xl:block ">
             <Carousel />
           </div>
         </div>
       </div>
 
       {/* tavaanmandy */}
-      <div className="flex bg-ED lg:h-[700px] sm:h-[1300px] h-[1400px] justify-center items-center">
+      <div className="flex bg-ED  justify-center items-center py-24">
         <div className="container flex flex-col gap-y-16">
           <h2 className="text-3xl lg:text-right text-center font-semibold text-black1 underline underline-offset-[16px] decoration-black1 ">
             توانمندی های فنی سدره{" "}
@@ -84,9 +115,9 @@ const HomePage = () => {
                     </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    شرکت سدره با تبدیل داده های توصیفی و آماری به اطلاعات هوشمند
-                    مکان محور، تجزیه و تحلیل های مکانی را در هر لحظه در اختیار
-                    کاربران قرار می دهد
+                    با استفاده از سیستم اطلاعات جغرافیایی یا همان GIS، می‌توان
+                    با مدیریت، تجزیه و تحلیل و بصری‌سازی اطلاعات جغرافیایی،
+                    داده‌ها را به دانسته‌های موثر در تصمیم‌گیری، تبدیل نمود
                   </p>
                 </div>
               </div>
@@ -99,10 +130,10 @@ const HomePage = () => {
                     </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    سدره با بررسی و تحلیل تصاویر حاصل از سنجنده های ماهواره ای
-                    ازطریق تکنیک‌های سنجش از دور به‌منظور شناسایی پوشش گیاهی،
-                    مطالعه اقلیم ایران، مطالعه آلودگی هوا، پیش‌بینی وضع هوا و
-                    میزان جنگخواری‌ها استفاده می‌کند
+                    استفاده از فن‌آوری‌های جدید مانند دریافت و پردازش داده‌ها از
+                    طریق سنجنده‌های ماهواره‌ای و استفاده از نرم‌افزار‌ها و
+                    سیستم‌های پردازش اطلاعات، نقش مهمی در ارزیابی و نظارت، کنترل
+                    و مدیریت منابع دارد
                   </p>
                 </div>
               </div>
@@ -113,10 +144,9 @@ const HomePage = () => {
                     <p className="text-xl font-bold  text-black1">علم داده </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    سدره با استفاده علوم داده از روش‌ها، الگوریتم‌ها و
-                    پروسه‌هایی برای گرفتن خروجی و آنالیز داده استفاده می کند،
-                    همچنین سدره با استفاده از تکنیک‌های دیتا ساینس روی مهندسی و
-                    تجسم بهتر داده و ارائه بهتر داده تمرکز کرده است
+                    با استفاده از روش‌ها، ابزارها و تکنیک‌های دیتا ساینس از
+                    داده‌های مطلوب برای تجزیه و تحلیل‌ و توسعه استراتژی‌های
+                    آماری استفاده می‌شود تا نتایج مطلوب حاصل شود
                   </p>
                 </div>
               </div>
@@ -131,9 +161,9 @@ const HomePage = () => {
                     </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    تیم سدره توانسته است با استفاده از فناوری‌های هوش مصنوعی و
-                    داده‌های ماهواره‌ای به الگوریتم‌های پیچیده ماشین لرنینگ
-                    به‌منظور بهره‌گیری از داده‌های مکان محور دست پیدا کند
+                    از تکنیک‌های یادگیری عمیق و یادگیری‌ماشین برای طراحی و توسعه
+                    استراتژی‌های الگوریتم‌محور استفاده می‌شود، الگوریتم‌هایی که
+                    تمرکز آن بر یادگیری ازطریق تجربه و داده‌های real-time است
                   </p>
                 </div>
               </div>
@@ -146,9 +176,10 @@ const HomePage = () => {
                     </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    سدره بنابر نیازها و اهداف هر کسب‌وکار امکان طراحی و
-                    پیاده‌سازی کامل انواع سامانه‌های تخصصی مکان محور را جهت رفع
-                    چالش‌های پیش‌رو دارد
+                    طراحی و پیاده‌سازی انواع پلتفرم‌های اختصاصی مکان‌محور و تحت
+                    وب، شامل نقشه و داشبوردهای مدیریتی و تحلیلی جهت اتخاذ
+                    تصمیمات هوشمندانه‌تر و رسیدن به دیدی عمیق‌تر نسبت به
+                    داده‌های مکانی
                   </p>
                 </div>
               </div>
@@ -161,9 +192,9 @@ const HomePage = () => {
                     </p>
                   </span>
                   <p className="w-11/12 font-light text-justify text-black1">
-                    سدره از طریق فضای ابری اطلاعات را بین بخش‌ها و مکان‌های
-                    مختلف یکپارچه می کند و سپس با کمک سرویس‌های ابری مثل یادگیری
-                    ماشین و هوش مصنوعی، بینش بهتری برای تصمیم‌گیری ارائه می دهد
+                    کاربران می‌توانند در هر جا و هر مکانی که دسترسی به اینترنت
+                    امکان‌پذیر باشد و با هر دستگاهی، به اطلاعات و داده‌های مکانی
+                    و سامانه‌ها و پلتفرم‌های تحت‌وب دسترسی راحت داشته باشند
                   </p>
                 </div>
               </div>
@@ -173,7 +204,7 @@ const HomePage = () => {
       </div>
 
       {/* rahe hal */}
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-20 mx-4 sm:mx-auto">
           <div className="flex flex-col lg:gap-y-6 gap-y-12">
             <h2 className="text-3xl lg:text-right text-center font-semibold text-ED underline underline-offset-[16px] decoration-ED ">
@@ -228,7 +259,7 @@ const HomePage = () => {
                 className="object-cover rounded-3xl h-[500px] "
               ></img>
               <div className="absolute pb-24 top-0 bottom-0 left-0 right-0 flex flex-col gap-y-4 items-center justify-center bg-black1/60">
-                <h3 className=" text-ED text-3xl font-extrabold">
+                <h3 className=" text-ED text-3xl text-center font-extrabold">
                   منابع طبیعی و محیط زیست
                 </h3>
                 <p className=" text-ED/90 font-light text-sm ">
@@ -257,23 +288,35 @@ const HomePage = () => {
       </div>
 
       {/* hamkaran */}
-      <div className="flex bg-ED lg:h-[700px] h-[1100px] justify-center items-center mt-60">
+      <div className="flex bg-ED justify-center items-center py-24">
         <div className="container flex flex-col gap-y-20">
           <h2 className="text-3xl lg:text-right text-center font-semibold text-black1 underline underline-offset-[16px] decoration-black1 ">
             همکاران سدره{" "}
           </h2>
-          <div className=" grid lg:grid-cols-3 gap-y-10 justify-items-center">
-            <Image src={p1} layout="fixed" height={200} alt="/"></Image>
+          <div className=" grid lg:grid-cols-3 gap-y-10 justify-items-center items-center">
+            <Image
+              src={p1Bg}
+              layout="fixed"
+              height={150}
+              width={300}
+              alt="/"
+            ></Image>
             <Image
               src={p2}
               layout="fixed"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               alt="/"
             ></Image>
-            <Image src={p3} layout="fixed" height={200} alt="/"></Image>
+            <Image
+              src={p3Bg}
+              layout="fixed"
+              height={100}
+              width={200}
+              alt="/"
+            ></Image>
           </div>
-          <Link href="/ourPartners#cooperation">
+          <Link href="/ourPartners#partne">
             <button className=" mt-8 border-2 border-primary4 px-4 py-3  w-fit rounded-lg self-center">
               <span className="flex flex-row gap-x-2 ">
                 <p className="text-primary4 font-bold">مشاهده تمامی همکاران </p>
@@ -285,18 +328,18 @@ const HomePage = () => {
       </div>
 
       {/* servis */}
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-24 mx-4 sm:mx-auto">
           <div className="flex flex-col lg:gap-y-8 gap-y-12">
             <h2 className="text-3xl lg:text-right text-center font-semibold text-ED underline underline-offset-[16px] decoration-ED ">
               سرویس های سدره{" "}
             </h2>
             <p className=" lg:w-1/2 text-ED/80 font-light">
-              سدره در زمینه‌های زیر می‌تواند به کسب‌وکارها، سازمان‌ها و دیگر
-              افراد خدمات اختصاصی خود را ارائه بدهد
+              شرکت‌ها، سازمان‌ها و دیگر افراد می‌توانند در زمینه‌های زیر از
+              خدمات اختصاصی سدره بهره‌مند شوند
             </p>
           </div>
-          <div className=" grid xl:grid-cols-4 md:grid-cols-2 gap-x-16 gap-y-24">
+          <div className=" grid xl:grid-cols-4 md:grid-cols-2 gap-x-12 gap-y-24">
             <div className="flex flex-col items-center gap-y-4 ">
               <div className="flex flex-col gap-y-3">
                 <Image src={messages} alt="/"></Image>
@@ -305,9 +348,9 @@ const HomePage = () => {
                 </p>
               </div>
               <p className="font-normal text-justify text-ED/70">
-                شرکت ویراپردازان سدره‌ می‌تواند در زمینه‌های هوش‌مصنوعی، علم
-                داده، سنجش از دور و سیستم‌های اطلاعات مکانی از کسب و کار شما
-                پشتیبانی کند
+                شرکت ویراپردازان سدره‌ می‌تواند در زمینه‌های توسعه مدل‌سازی‌های
+                هوش‌مصنوعی، تصاویر ماهواره‌ای تکنیک‌های علم داده، سنجش از دور و
+                سیستم‌های اطلاعات مکانی از کسب و کار شما پشتیبانی کند
               </p>
             </div>
             <div className="flex flex-col items-center gap-y-4 ">
@@ -316,10 +359,9 @@ const HomePage = () => {
                 <p className="text-lg font-bold text-ED">پردازش اطلاعات </p>
               </div>
               <p className="font-normal text-justify text-ED/70">
-                سدره با شناسایی الگوها و مدل‌سازی پدیده‌های گوناگون با
-                هوش‌مصنوعی امکان ارائه و به تصویرکشیدن اطلاعات مکانی و موضوعی در
-                قالب نقشه ونیز امکان استفاده از داده‌های موجود در جهت اهداف
-                مختلف و براساس نیازهای گوناگون کاربران را فراهم کرده است
+                شناسایی و بررسی میزان تغییرات کاربری اراضی، پوشش‌های گیاهی،
+                پهنه‌های آبی، تغییرات ساختمان‌های مسکونی، ناهمواری‌ها و کیفیت
+                هوای یک منطقه به سفارش شما
               </p>
             </div>
             <div className="flex flex-col items-center gap-y-4 ">
@@ -330,9 +372,10 @@ const HomePage = () => {
                 </p>
               </div>
               <p className="font-normal text-justify text-ED/70">
-                شناسایی و بررسی میزان تغییرات کاربری اراضی، پوشش‌های گیاهی،
-                پهنه‌های آبی، تغییرات ساختمان‌های مسکونی، ناهمواری‌ها و کیفیت
-                هوای یک منطقه به سفارش شما
+                سدره با شناسایی الگوها و مدل‌سازی پدیده‌های گوناگون با
+                هوش‌مصنوعی امکان به تصویرکشیدن اطلاعات مکانی در قالب نقشه،
+                بصری‌سازی داده‌های مکانی و ارائه به‌صورت نمودارها و جداول تحلیلی
+                و را دارد
               </p>
             </div>
             <div className="flex flex-col items-center gap-y-4 ">
@@ -343,15 +386,15 @@ const HomePage = () => {
                 </p>
               </div>
               <p className="font-normal text-justify text-ED/70">
-                برای رفع چالش‌های موجود، به کمک ما یک راه‌حل کاملا عملیاتی و
-                شخصی‌سازی شده را در قالب پلتفرم‌های مکان محور برای کسب و کار خود
-                پیاده‌سازی کنید
+                برای رفع چالش‌های موجود در سر راهتان، به کمک ما یک راه‌حل کاملا
+                عملیاتی و شخصی‌سازی شده را در قالب پلتفرم‌های مکان محور برای کسب
+                و کار خود پیاده‌سازی کنید
               </p>
             </div>
           </div>
           <div className=" mt-8 flex flex-col gap-y-8">
             <p className=" text-sm text-ED/90 self-center">
-              برای بهره‌مندی از سرویس‌ها و خدمات سدره با تماس بگیرید{" "}
+              برای بهره‌مندی از سرویس‌ها و خدمات سدره با ما تماس بگیرید{" "}
             </p>
 
             <button
@@ -426,54 +469,72 @@ const HomePage = () => {
                     <form
                       action=""
                       className="flex flex-col justify-start space-y-4"
+                      ref={form}
+                      onSubmit={sendEmail}
                     >
                       <input
                         type="text"
                         placeholder="نام خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1 "
+                        name="from_name"
                       />
                       <input
                         type="email"
                         placeholder="ایمیل خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1"
+                        name="from_email"
                       />
                       <div className="flex flex-col gap-2 space-y-2 xl:flex-row xl:space-y-0">
                         <input
                           type="tel"
                           placeholder="شماره موبایل خود را وارد کنید ..."
-                          className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs 2xl:text-sm focus:outline focus:outline-1"
+                          className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs  focus:outline focus:outline-1"
+                          name="from_phone"
                         />
 
                         <select
                           id="subject"
-                          class="bg-CB/50 xl:w-2/5 xl:text-xs 2xl:text-sm text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
+                          class="bg-CB/50 xl:w-2/5 xl:text-xs text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
+                          name="from_topic"
                         >
                           <option selected className=" text-black1/60">
                             موضوع مورد نظر
                           </option>
-                          <option value="KE" className=" text-black1">
+                          <option value="مدیریت شهری" className=" text-black1">
                             مدیریت شهری{" "}
                           </option>
-                          <option value="MA" className=" text-black1">
+                          <option value="رسانه" className=" text-black1">
                             رسانه{" "}
                           </option>
-                          <option value="HA" className=" text-black1">
+                          <option
+                            value="منابع طبیعی و محیط زیست"
+                            className=" text-black1"
+                          >
                             منابع طبیعی و محیط زیست{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="صنعتی و تجاری"
+                            className=" text-black1"
+                          >
                             صنعتی و تجاری{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option value="هواشناسی" className=" text-black1">
                             هواشناسی{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option value="انرژی" className=" text-black1">
                             انرژی{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="حقوقی و قضایی"
+                            className=" text-black1"
+                          >
                             حقوقی و قضایی{" "}
                           </option>
 
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="موارد دیگر ..."
+                            className=" text-black1"
+                          >
                             موارد دیگر ...{" "}
                           </option>
                         </select>
@@ -483,6 +544,7 @@ const HomePage = () => {
                         rows="10"
                         placeholder="متن خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded resize-none bg-CB/50 focus:outline focus:outline-1 "
+                        name="message"
                       ></textarea>
                       <button
                         type="submit"
@@ -518,7 +580,7 @@ const HomePage = () => {
       </Transition.Root>
 
       {/* space */}
-      <div className="h-32"></div>
+      {/* <div className="h-32"></div>  */}
     </div>
   );
 };

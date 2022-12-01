@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 import s1 from "/img/servicesImage/s1.jpg";
 import s2 from "/img/servicesImage/s2.jpg";
@@ -33,29 +32,28 @@ const Services = () => {
   const [open, setOpen] = useState(false);
   const cancelButtonRef = useRef(null);
 
-  //
-  // const form = useRef();
+  const form = useRef();
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  //   emailjs
-  //     .sendForm(
-  //       "service_6tq8dx3",
-  //       "template_lh079dc",
-  //       form.current,
-  //       "qsclqTFM0PTc7W9o0"
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-  // };
-  //
+    emailjs
+      .sendForm(
+        "service_6tq8dx3",
+        "template_lh079dc",
+        form.current,
+        "qsclqTFM0PTc7W9o0"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("Message sent ...");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <>
@@ -98,7 +96,7 @@ const Services = () => {
       </div>
 
       {/* komak */}
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-20 mx-4 sm:mx-auto">
           <div className="flex flex-col lg:gap-y-12 gap-y-12 items-center">
             <h2 className="text-3xl text-center font-semibold text-ED  ">
@@ -134,7 +132,7 @@ const Services = () => {
       </div>
 
       {/* roikard */}
-      <div className="flex items-center justify-center mt-60 bg-ED py-24">
+      <div className="flex items-center justify-center bg-ED py-24">
         <div className="container flex flex-col gap-y-32 mx-4 sm:mx-auto">
           <h2 className="text-3xl text-center font-semibold text-black1  ">
             رویکرد سدره{" "}
@@ -200,7 +198,7 @@ const Services = () => {
 
       {/* servis */}
       <div id="counseling"></div>
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-24 mx-4 sm:mx-auto">
           <div className="flex flex-col lg:gap-y-12 gap-y-16 items-center">
             <h2 className="text-3xl  text-center font-semibold text-ED ">
@@ -300,7 +298,7 @@ const Services = () => {
       </div>
 
       {/* moshavere */}
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="grid md:grid-cols-2 bg-ED">
           <div className="flex flex-col gap-y-8 xl:pr-40 md:py-44 py-32 px-16">
             <h2 className=" text-primary1 text-2xl font-semibold">
@@ -331,7 +329,7 @@ const Services = () => {
       </div>
 
       {/* team */}
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-20 mx-4 sm:mx-auto">
           <h2 className="text-3xl text-center font-semibold text-ED ">
             معرفی تیم های تخصصی سدره{" "}
@@ -393,7 +391,7 @@ const Services = () => {
 
       {/* saamaane */}
       <div id="specializedSystems"></div>
-      <div className="flex items-center justify-center mt-60">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col gap-y-36 mx-4 sm:mx-auto">
           <div className="flex flex-col lg:gap-y-12 gap-y-12 items-center">
             <h2 className="text-3xl text-center font-semibold text-ED  ">
@@ -508,7 +506,7 @@ const Services = () => {
       </div>
 
       {/* space */}
-      <div className=" h-[200px]"></div>
+      {/* <div className=" h-[200px]"></div> */}
 
       {/* pop up */}
       <Transition.Root show={open} as={Fragment}>
@@ -569,59 +567,71 @@ const Services = () => {
                     <form
                       action=""
                       className="flex flex-col justify-start space-y-4"
-                      // ref={form}
-                      // onSubmit={sendEmail}
+                      ref={form}
+                      onSubmit={sendEmail}
                     >
                       <input
                         type="text"
                         placeholder="نام خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1 "
-                        // name="from_name"
+                        name="from_name"
                       />
                       <input
                         type="email"
                         placeholder="ایمیل خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1"
-                        // name="from_email"
+                        name="from_email"
                       />
                       <div className="flex flex-col gap-2 space-y-2 xl:flex-row xl:space-y-0">
                         <input
                           type="tel"
                           placeholder="شماره موبایل خود را وارد کنید ..."
-                          className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs 2xl:text-sm focus:outline focus:outline-1"
-                          // name="from_phone"
+                          className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs focus:outline focus:outline-1"
+                          name="from_phone"
                         />
 
                         <select
                           id="subject"
-                          class="bg-CB/50 xl:w-2/5 xl:text-xs 2xl:text-sm text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
-                          // name="from_topic"
+                          class="bg-CB/50 xl:w-2/5 xl:text-xs text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
+                          name="from_topic"
                         >
                           <option selected className=" text-black1/60">
                             موضوع مورد نظر
                           </option>
-                          <option value="KE" className=" text-black1">
+                          <option value="مدیریت شهری" className=" text-black1">
                             مدیریت شهری{" "}
                           </option>
-                          <option value="MA" className=" text-black1">
+                          <option value="رسانه" className=" text-black1">
                             رسانه{" "}
                           </option>
-                          <option value="HA" className=" text-black1">
+                          <option
+                            value="منابع طبیعی و محیط زیست"
+                            className=" text-black1"
+                          >
                             منابع طبیعی و محیط زیست{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="صنعتی و تجاری"
+                            className=" text-black1"
+                          >
                             صنعتی و تجاری{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option value="هواشناسی" className=" text-black1">
                             هواشناسی{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option value=" انرژی" className=" text-black1">
                             انرژی{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="حقوقی و قضایی"
+                            className=" text-black1"
+                          >
                             حقوقی و قضایی{" "}
                           </option>
-                          <option value="NA" className=" text-black1">
+                          <option
+                            value="موارد دیگر ..."
+                            className=" text-black1"
+                          >
                             موارد دیگر ...{" "}
                           </option>
                         </select>
@@ -631,7 +641,7 @@ const Services = () => {
                         rows="10"
                         placeholder="متن خود را وارد کنید ..."
                         className="px-2 py-2 text-sm border-none rounded resize-none bg-CB/50 focus:outline focus:outline-1 "
-                        // name="message"
+                        name="message"
                       ></textarea>
                       <button
                         type="submit"

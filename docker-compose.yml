@@ -72,7 +72,7 @@ services:
       - ALLOW_ORIGIN=http://localhost:3000
     volumes:
       - /home/ubuntu/sedreh_web_appilcation/api_django/images:/api_django/images
-#      - /home/sedreh-dinvarzade/Desktop/sedreh_web_application/api_django:/api_django
+      - ./api_django:/api_django
 
     restart: always
 

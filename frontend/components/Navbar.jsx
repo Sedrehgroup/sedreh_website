@@ -231,9 +231,11 @@ const Navbar = (props) => {
               </ul>
             </div>
             <div className="items-center hidden lg:flex xl:gap-x-4 gap-x-2 text-white1">
-              <button className="px-5 py-3 font-bold rounded-lg bg-primary3 text-primary4 hover:bg-primary3/80">
-                ورود به سامانه
-              </button>
+              <Link href="/system">
+                <button className="px-5 py-3 font-bold rounded-lg bg-primary3 text-primary4 hover:bg-primary3/80">
+                  ورود به سامانه
+                </button>
+              </Link>
               <Link href="/contactUs">
                 <button className="px-4 py-3 font-bold text-primary3 hover:text-primary3/80">
                   ارتباط با ما

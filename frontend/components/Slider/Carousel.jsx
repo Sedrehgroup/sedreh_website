@@ -18,14 +18,14 @@ const Carousel = () => {
   return (
     <>
       <Swiper
-        className=" -mt-10 hidden lg:block"
+        className=" -mb-14 hidden lg:block"
         effect={"coverflow"}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
         coverflowEffect={{
           rotate: 0,
-          stretch: 700,
+          stretch: 600,
           depth: 800,
           modifier: 1,
           slideShadows: false,
@@ -34,7 +34,7 @@ const Carousel = () => {
         loop={true}
         modules={[EffectCoverflow, Pagination]}
       >
-        <SwiperSlide isDuplicate={true} className="mb-12">
+        <SwiperSlide isDuplicate={true} className="mb-32">
           <Cards
             cardImage={w1}
             title="کاربرد هوش مصنوعی در تولید و تحلیل اطلاعات مکان محور"

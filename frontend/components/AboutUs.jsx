@@ -40,7 +40,7 @@ const AboutUs = () => {
         />
 
         {/* Overlay */}
-        <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-black1/80 ">
+        <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-black1/80">
           <div className="container flex-col justify-center space-y-8">
             <h1 className="px-8 text-4xl font-extrabold leading-tight text-center md:text-right md:w-3/4 lg:w-1/3 md:p-0 text-ED">
               استفاده از داده‌های هوشمند مکانی برای اتخاذ تصمیمات بهتر
@@ -61,7 +61,7 @@ const AboutUs = () => {
 
         {/* sedreh yani */}
         <div id="aboutSedreh" className="h-10"></div>
-        <div className="flex items-start justify-center mx-4 mt-24 ">
+        <div className="flex items-start justify-center mx-4 py-24">
           <div className="container flex flex-col mx-auto gap-y-20">
             <div className="flex flex-col gap-y-3 ">
               <h2 className="text-4xl font-semibold leading-tight lg:w-5/12 text-ED">
@@ -126,14 +126,14 @@ const AboutUs = () => {
         </div>
 
         {/* ahdafe sedreh */}
-        <div className="flex items-center justify-center mt-60">
+        <div className="flex items-center justify-center py-24">
           <div className="container flex flex-col mx-auto gap-y-28">
             <h2 className="text-3xl font-semibold text-center text-ED">
               اهداف سدره
             </h2>
             <div className="flex flex-col w-full space-y-24 lg:space-y-16">
-              <div className="space-y-24 lg:columns-2 lg:mx-0 sm:mx-8 columns-1 divide-x-2">
-                <div className="p-4 md:py-6 md:px-2 border-x-2 border-primary2/10 lg:border-r-0">
+              <div className="space-y-24 lg:columns-2 lg:mx-0 sm:mx-8 columns-1">
+                <div className="p-4 md:py-6 md:px-2 border-x-2 border-primary2/10 lg:border-none">
                   <div className="flex flex-col items-center gap-8 ">
                     <p className="text-xl font-bold text-center text-primary3">
                       حل مسائل کلان کشور{" "}
@@ -160,7 +160,7 @@ const AboutUs = () => {
                 </div>
               </div>
               <div className="space-y-24 lg:columns-2 lg:mx-0 sm:mx-8 columns-1 ">
-                <div className="p-4 md:py-6 md:px-2 border-x-2 border-primary2/10 lg:border-r-0">
+                <div className="p-4 md:py-6 md:px-2 border-x-2 border-primary2/10 lg:border-none">
                   <div className="flex flex-col items-center gap-8 ">
                     <p className="text-xl font-bold text-center text-primary3">
                       جلوگیری از هدررفت منابع کشور و افزایش بهره وری{" "}
@@ -194,7 +194,7 @@ const AboutUs = () => {
         </div>
 
         {/* osol kare sedreh */}
-        <div className="flex items-center justify-center mt-60 bg-primary2 lg:py-32 py-24">
+        <div className="flex items-center justify-center bg-primary2 py-24">
           <div className="container flex flex-col mx-auto gap-y-28">
             <h2 className="text-3xl font-semibold text-center text-primary1">
               اصول کار سدره
@@ -260,7 +260,7 @@ const AboutUs = () => {
         </div>
 
         {/* faaliat sedreh */}
-        <div className="flex items-center justify-center mt-60">
+        <div className="flex items-center justify-center py-24">
           <div className="container flex flex-col mx-auto gap-y-28   rounded-xl">
             <h2 className="text-3xl font-semibold text-center text-ED">
               فعالیت سدره{" "}
@@ -330,7 +330,7 @@ const AboutUs = () => {
         </div>
 
         {/* dastaavarde sedreh */}
-        <div className="flex items-center justify-center mt-60">
+        {/* <div className="flex items-center justify-center py-24">
           <div className="container flex flex-col mx-auto gap-y-16">
             <h2 className="text-3xl font-semibold text-center text-ED">
               دستاورد های سدره
@@ -506,7 +506,7 @@ const AboutUs = () => {
               </div>
             ) : null}
           </div>
-        </div>
+        </div> */}
 
         {/*  */}
 
@@ -645,7 +645,7 @@ const AboutUs = () => {
         {/*  */}
 
         {/* space */}
-        <div className=" h-[200px]"></div>
+        {/* <div className=" h-[200px]"></div> */}
       </div>
     </>
   );

@@ -38,7 +38,7 @@ const IndustrialCommercial = () => {
       </div>
 
       {/* all solutions */}
-      <div className="flex items-center justify-center lg:h-[1300px] sm:h-[2000px] mt-32 mb-24">
+      <div className="flex items-center justify-center py-24">
         <div className="container mx-8 sm:mx-auto">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 xl:gap-x-24 sm:gap-x-8 sm:gap-y-32 gap-y-24 justify-items-center">
             <SolutionCard

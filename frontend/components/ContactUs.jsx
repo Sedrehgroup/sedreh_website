@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
+
 import map from "../img/icon/map.svg";
 import callCalling from "../img/icon/call-calling.svg";
 import sms from "../img/icon/sms.svg";
+
 // import axios from "./Axios";
 
 const ContactUs = () => {
@@ -38,11 +41,34 @@ const ContactUs = () => {
   //   }
   // };
 
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_6tq8dx3",
+        "template_lh079dc",
+        form.current,
+        "qsclqTFM0PTc7W9o0"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          console.log("Message sent ...");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <>
-      <div className="w-full lg:h-[1100px] sm:h-[1700px] h-[1500px]">
+      <div className="w-full py-40">
         <div className="flex items-center justify-center">
-          <div className="container mt-40 lg:mt-52">
+          <div className="container">
             <div className="grid lg:grid-cols-12 grid-cols-1 lg:w-full sm:w-2/3 w-4/5 mx-auto gap-6 h-[800px]">
               <div className="flex flex-col justify-center order-1 py-4 space-y-4 lg:row-span-2 lg:col-span-4 lg:order-none bg-ED rounded-2xl px-11 ">
                 <div className="flex flex-col items-start justify-start gap-y-1">
@@ -101,12 +127,15 @@ const ContactUs = () => {
                 <form
                   action=""
                   className="flex flex-col justify-start space-y-4"
+                  ref={form}
+                  onSubmit={sendEmail}
                 >
                   <input
                     id="name"
                     type="text"
                     placeholder="نام خود را وارد کنید ..."
                     className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1 "
+                    name="from_name"
                     // value={data.name}
                     // onChange={(e) => handleChange(e)}
                   />
@@ -115,6 +144,7 @@ const ContactUs = () => {
                     type="email"
                     placeholder="ایمیل خود را وارد کنید ..."
                     className="px-2 py-2 text-sm border-none rounded bg-CB/50 focus:outline focus:outline-1"
+                    name="from_email"
                     // value={data.email}
                     // onChange={(e) => handleChange(e)}
                   />
@@ -123,14 +153,16 @@ const ContactUs = () => {
                       id="phone"
                       type="tel"
                       placeholder="شماره موبایل خود را وارد کنید ..."
-                      className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs 2xl:text-sm focus:outline focus:outline-1"
+                      className="px-2 py-2 text-sm border-none rounded bg-CB/50 xl:w-3/5 xl:text-xs focus:outline focus:outline-1"
+                      name="from_phone"
                       // value={data.phone}
                       // onChange={(e) => handleChange(e)}
                     />
 
                     <select
                       id="topic"
-                      class="bg-CB/50 xl:w-2/5 xl:text-xs 2xl:text-sm text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
+                      class="bg-CB/50 xl:w-2/5 xl:text-xs  text-sm rounded px-2 py-2 border-none  text-black1/80 focus:outline  focus:outline-1"
+                      name="from_topic"
                       // value={data.topic}
                       // onChange={(e) => handleChange(e)}
                     >
@@ -171,6 +203,7 @@ const ContactUs = () => {
                     rows="10"
                     placeholder="متن خود را وارد کنید ..."
                     className="px-2 py-2 text-sm border-none rounded resize-none bg-CB/50 focus:outline focus:outline-1 "
+                    name="message"
                     // value={data.message}
                     // onChange={(e) => handleChange(e)}
                   ></textarea>

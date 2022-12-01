@@ -33,7 +33,7 @@ const Solutions = () => {
         {/* Overlay */}
         <div className="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-black1/80 ">
           <div className="container flex flex-col items-center space-y-12">
-            <h1 className=" text-center px-8 lg:text-6xl text-4xl font-extrabold leading-tight md:w-3/4  md:p-0 text-ED">
+            <h1 className=" text-center px-8 lg:text-6xl text-4xl font-extrabold leading-normal md:w-4/5 md:p-0 text-ED">
               بهترین راه حل ها با استفاده از هوش مکانی{" "}
             </h1>
             <p className="px-8 text-center text-xl font-light md:p-0 lg:w-1/2 text-ED/80 wspacing">
@@ -45,7 +45,7 @@ const Solutions = () => {
       </div>
 
       {/* all solutions */}
-      <div className="flex items-center justify-center lg:h-[2700px] sm:h-[4200px] mt-32 mb-24">
+      <div className="flex items-center justify-center py-24">
         <div className="container mx-8 sm:mx-auto">
           <div className="grid lg:grid-cols-3 sm:grid-cols-2 xl:gap-x-24 sm:gap-x-8 sm:gap-y-32 gap-y-24 justify-items-center">
             <SolutionCard
@@ -108,7 +108,7 @@ const Solutions = () => {
       </div>
 
       {/* vizegi */}
-      <div className="flex items-center justify-center mt-60 mb-24">
+      <div className="flex items-center justify-center py-24">
         <div className="container flex flex-col mx-auto gap-y-24">
           <div className="flex flex-col gap-y-8 items-center">
             <h2 className="text-3xl font-semibold text-center text-ED">
