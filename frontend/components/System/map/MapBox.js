@@ -220,7 +220,7 @@ export default function Mapbox() {
     if (!!!!layerName && typeof layerName == "string") {
       console.log("useEffect");
       const layerCode = layerName.slice(7);
-      const url = `${GEO_API}/geoserver/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
+      const url = `${GEO_API}/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
       setUrlLayer(url);
       // setUpdate(Math.random());
     }

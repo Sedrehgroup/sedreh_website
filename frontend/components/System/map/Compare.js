@@ -91,7 +91,7 @@ const Compare = function Compare() {
       typeof titlePolygonLeftLayerName == "string"
     ) {
       const layerCode = titlePolygonLeftLayerName.slice(7);
-      const url = `${GEO_API}/geoserver/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
+      const url = `${GEO_API}/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
       setUrlLayerLeft(url);
     }
     return function cleanup() {
@@ -106,7 +106,7 @@ const Compare = function Compare() {
       typeof titlePolygonRightLayerName == "string"
     ) {
       const layerCode = titlePolygonRightLayerName.slice(7);
-      const url = `${GEO_API}/geoserver/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
+      const url = `${GEO_API}/sedreh/wms?service=WMS&version=1.1.0&request=GetMap&layers=sedreh%3A${layerCode}&bbox={bbox-epsg-3857}&width=672&height=768&srs=EPSG:3857&transparent=true&styles=&format=image%2Fpng`;
       setUrlLayerRight(url);
     }
     return function cleanup() {
