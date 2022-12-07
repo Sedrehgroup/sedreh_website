@@ -29,25 +29,25 @@ services:
       - main
 
   postgis:
-    image: kartoza/postgis:14-3.2
+    image: bitnami/postgresql:15
     container_name: postgis
     volumes:
-      - db_land:/var/lib/postgresql
-    restart: on-failure
+      - pg_data:/bitnami/postgresql
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASS=Alireza12851376
-      - POSTGRES_DBNAME=sedreh
+      - POSTGRESQL_USERNAME=postgres
+      - POSTGRESQL_PASSWORD=Alireza12851376
+      - POSTGRESQL_DATABASE=sedreh
     networks:
       - main
     expose:
       - 5432
+    restart: on-failure
 
   api_django:
     build:
       context: ./api_django
     command: sh -c "python manage.py migrate 
-              && mkdir logs
+              && mkdir logs -p
               && celery -A config worker -l INFO -f logs/celery_worker.log --detach 
               && celery -A config beat -l info -f logs/celery_beat.log --scheduler django_celery_beat.schedulers:DatabaseScheduler --detach 
               && gunicorn --reload config.wsgi --bind 0.0.0.0:8000"
@@ -115,7 +115,8 @@ networks:
   main:
 
 volumes:
-  db_land:
+  pg_data:
+    driver: local
   geoserver_sedreh:
   geoserver_footprints_sedreh:
   geoserver_gwc_sedreh:

@@ -1,0 +1,71 @@
+[2022-12-07 08:22:00,816: INFO/MainProcess] Connected to amqp://guest:**@rabbitmq:5672//
+[2022-12-07 08:22:00,831: INFO/MainProcess] mingle: searching for neighbors
+[2022-12-07 08:22:01,883: INFO/MainProcess] mingle: all alone
+[2022-12-07 08:22:01,916: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-12-07 08:22:01,916: INFO/MainProcess] celery@b5843e792b17 ready.
+[2022-12-07 09:19:48,354: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/site-packages/celery/worker/consumer/consumer.py", line 332, in start
+    blueprint.start(self)
+  File "/usr/local/lib/python3.8/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/usr/local/lib/python3.8/site-packages/celery/worker/consumer/consumer.py", line 628, in start
+    c.loop(*c.loop_args())
+  File "/usr/local/lib/python3.8/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+  File "/usr/local/lib/python3.8/site-packages/kombu/asynchronous/hub.py", line 362, in create_loop
+    cb(*cbargs)
+  File "/usr/local/lib/python3.8/site-packages/kombu/transport/base.py", line 235, in on_readable
+    reader(loop)
+  File "/usr/local/lib/python3.8/site-packages/kombu/transport/base.py", line 217, in _read
+    drain_events(timeout=0)
+  File "/usr/local/lib/python3.8/site-packages/amqp/connection.py", line 525, in drain_events
+    while not self.blocking_read(timeout):
+  File "/usr/local/lib/python3.8/site-packages/amqp/connection.py", line 531, in blocking_read
+    return self.on_inbound_frame(frame)
+  File "/usr/local/lib/python3.8/site-packages/amqp/method_framing.py", line 53, in on_frame
+    callback(channel, method_sig, buf, None)
+  File "/usr/local/lib/python3.8/site-packages/amqp/connection.py", line 537, in on_inbound_method
+    return self.channels[channel_id].dispatch_method(
+  File "/usr/local/lib/python3.8/site-packages/amqp/abstract_channel.py", line 156, in dispatch_method
+    listener(*args)
+  File "/usr/local/lib/python3.8/site-packages/amqp/connection.py", line 666, in _on_close
+    self._x_close_ok()
+  File "/usr/local/lib/python3.8/site-packages/amqp/connection.py", line 681, in _x_close_ok
+    self.send_method(spec.Connection.CloseOk, callback=self._on_close_ok)
+  File "/usr/local/lib/python3.8/site-packages/amqp/abstract_channel.py", line 70, in send_method
+    conn.frame_writer(1, self.channel_id, sig, args, content)
+  File "/usr/local/lib/python3.8/site-packages/amqp/method_framing.py", line 186, in write_frame
+    write(buffer_store.view[:offset])
+  File "/usr/local/lib/python3.8/site-packages/amqp/transport.py", line 347, in write
+    self._write(s)
+ConnectionResetError: [Errno 104] Connection reset by peer
+[2022-12-07 09:19:48,367: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/worker/consumer/consumer.py:367: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered back to the queue.
+You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss setting.
+In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2022-12-07 09:19:48,369: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 2.00 seconds... (1/100)
+
+[2022-12-07 09:19:50,373: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 4.00 seconds... (2/100)
+
+[2022-12-07 09:19:54,378: ERROR/MainProcess] consumer: Cannot connect to amqp://guest:**@rabbitmq:5672//: [Errno 111] Connection refused.
+Trying again in 6.00 seconds... (3/100)
+
+[2022-12-07 13:38:22,448: INFO/MainProcess] Connected to amqp://guest:**@rabbitmq:5672//
+[2022-12-07 13:38:22,469: INFO/MainProcess] mingle: searching for neighbors
+[2022-12-07 13:38:23,514: INFO/MainProcess] mingle: all alone
+[2022-12-07 13:38:23,543: WARNING/MainProcess] /usr/local/lib/python3.8/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+            leak, never use this setting in production environments!
+  warnings.warn('''Using settings.DEBUG leads to a memory
+
+[2022-12-07 13:38:23,543: INFO/MainProcess] celery@a00b2d204321 ready.
