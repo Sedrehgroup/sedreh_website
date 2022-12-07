@@ -46,7 +46,10 @@ services:
   api_django:
     build:
       context: ./api_django
-    command: sh -c "python manage.py migrate && celery -A config worker -l INFO --detach && celery -A config beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler --detach && gunicorn --reload config.wsgi --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate 
+              && celery -A config worker -l INFO -f celery_worker.log --detach 
+              && celery -A config beat -l info -f celery_beat.log --scheduler django_celery_beat.schedulers:DatabaseScheduler --detach 
+              && gunicorn --reload config.wsgi --bind 0.0.0.0:8000"
     container_name: api_django
     depends_on:
       - geoserver
